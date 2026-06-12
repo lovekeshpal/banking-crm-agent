@@ -1,0 +1,18 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Environment variables (API keys — never commit this)
+.env
+
+# Database file (generated locally by seed script)
+db/database.db
+
+# Mac
+.DS_Store
+
+# VS Code
+.vscode/
