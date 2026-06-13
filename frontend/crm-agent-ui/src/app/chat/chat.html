@@ -1,0 +1,69 @@
+<div class="chat-container">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="header-left">
+        <div class="avatar">🏦</div>
+        <div>
+          <h2>Banking CRM Agent</h2>
+          <span class="status">● Online</span>
+        </div>
+      </div>
+      <button class="clear-btn" (click)="clearChat()">New Chat</button>
+    </div>
+  
+    <!-- Messages -->
+    <div class="messages-container">
+      <div
+        *ngFor="let message of messages"
+        class="message-wrapper"
+        [class.user-wrapper]="message.role === 'user'"
+      >
+        <!-- Assistant avatar -->
+        <div class="message-avatar" *ngIf="message.role === 'assistant'">🤖</div>
+  
+        <!-- Message bubble -->
+        <div
+          class="message-bubble"
+          [class.user-bubble]="message.role === 'user'"
+          [class.assistant-bubble]="message.role === 'assistant'"
+        >
+          <pre class="message-content">{{ message.content }}</pre>
+          <span class="timestamp">
+            {{ message.timestamp | date:'shortTime' }}
+          </span>
+        </div>
+      </div>
+  
+      <!-- Loading indicator -->
+      <div class="message-wrapper" *ngIf="isLoading">
+        <div class="message-avatar">🤖</div>
+        <div class="assistant-bubble message-bubble">
+          <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Input area -->
+    <div class="input-area">
+      <textarea
+        [(ngModel)]="userInput"
+        (keydown)="onKeyPress($event)"
+        placeholder="Ask about customers, loans, outreach..."
+        rows="2"
+        [disabled]="isLoading"
+      ></textarea>
+      <button
+        class="send-btn"
+        (click)="sendMessage()"
+        [disabled]="isLoading || !userInput.trim()"
+      >
+        {{ isLoading ? '...' : '➤' }}
+      </button>
+    </div>
+  
+  </div>
