@@ -9,6 +9,33 @@
     overflow: hidden;
   }
   
+  /* Responsive */
+  @media (max-width: 860px) {
+    .chat-container {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chat-header h2 {
+      font-size: 14px;
+    }
+  
+    .message-bubble {
+      max-width: 90%;
+    }
+  
+    .message-content {
+      font-size: 12.5px;
+    }
+  
+    .input-area textarea {
+      font-size: 13px;
+    }
+  }
+  
   /* Header */
   .chat-header {
     background: #1a237e;
